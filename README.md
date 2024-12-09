@@ -30,31 +30,25 @@ https://drive.google.com/file/d/1uhkOwCCQK7LoER6tXZpsVbIfAr-CJomJ/view?usp=shari
 
 Upload the dataset in your storage account on Azure
 On Snowflake:
-Create a database called: “assignment_1”
-Create a stage called “stage_assignment”, pointing to your azure storage
-Ingest the data as external tables on Snowflake
-Create two external tables “ex_table_youtube_trending” and “ex_table_youtube_category” with the correct data type.
-Transfer the data from external tables into tables with the following columns:
-For trending data create a table called “table_youtube_trending” with:
-
-
-For category data create a table called “table_youtube_category” with:
-
+1. Create a database called: “assignment_1”
+2. Create a stage called “stage_assignment”, pointing to your azure storage
+3. Ingest the data as external tables on Snowflake
+4. Create two external tables “ex_table_youtube_trending” and “ex_table_youtube_category” with the correct data type.
+5. Transfer the data from external tables into tables with the following columns:
 
 Create a final table called “table_youtube_final” by combining “table_youtube_trending” and  “table_youtube_category” on country and categoryid (be careful to not lose any records), while adding a new field called ideas by using the “UUID_STRING()” function :
-
 
 You should end up with 2,667,041 rows in table_youtube_final
 
 # PART 2: Data Cleaning 
 Provide a sql file containing all the sql code used in Snowflake for part 2 and called it “part_2.sql” (add comments to separate each questions):
 
-In “table_youtube_category” which category_title has duplicates if we don’t take into account the categoryid (return only a single row)?
-In “table_youtube_category” which category_title only appears in one country?
-In “table_youtube_final”, what is the categoryid of the missing category_titles?
-Update the table_youtube_final to replace the NULL values in category_title with the answer from the previous question.
-In “table_youtube_final”, which video doesn’t have a channeltitle (return only the title)?
-Delete from “table_youtube_final“, any record with video_id = “#NAME?”
+1. In “table_youtube_category” which category_title has duplicates if we don’t take into account the categoryid (return only a single row)?
+2. In “table_youtube_category” which category_title only appears in one country?
+3. In “table_youtube_final”, what is the categoryid of the missing category_titles?
+4. Update the table_youtube_final to replace the NULL values in category_title with the answer from the previous question.
+5. In “table_youtube_final”, which video doesn’t have a channeltitle (return only the title)?
+6. Delete from “table_youtube_final“, any record with video_id = “#NAME?”
 
 The “table_youtube_final“ contains duplicates with the same video_id, country and trending_date however their metrics (likes, dislikes, etc..) can be different. E.g:
 
